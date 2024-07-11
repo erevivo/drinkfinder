@@ -72,11 +72,10 @@ const App: React.FC = () => {
     };
 
     const sortItemsByDate = () => {
-        const sorted = [...filteredDrinks].sort((a, b) => {
-            // Assuming there's a date attribute in your Drink model
-            const dateString1 = "2024-07-12"; // Example date string in yyyy-mm-dd format
-            const dateString2 = "2024-09-12"; // Example date string in yyyy-mm-dd format
-            return new Date(dateString1).getTime() - new Date(dateString2).getTime();
+        const sorted = [...filteredDrinks].sort((a: Drink, b) => {
+            const date1 = a.dateModified??"1999-01-01";
+            const date2 = b.dateModified??"1999-01-01";
+            return new Date(date1).getTime() - new Date(date2).getTime();
         });
         // setSortedItems(sorted);
         setDrinks(sorted);
